@@ -7,45 +7,34 @@ public class Exploder : MonoBehaviour
     [SerializeField] private float _defaultExplosionForce = 150f;
     [SerializeField] private ParticleSystem _effect;
 
-    private float _averageValue;
     private int _numberOfSides = 3;
-    private float _explosionForce;
-    private float _explosionRadius;
 
-    private void OnMouseDown()
+    public void GetExplode(GameObject gameObject)
     {
-        Explode();
+        Explode(gameObject);
     }
 
-    private void Explode()
+    private void Explode(GameObject gameObject)
     {
         foreach (Rigidbody explodableObject in GetExplodableObjects())
         {
             explodableObject.AddExplosionForce(SetExplosionForce(explodableObject), transform.position, SetExplosionRadius(explodableObject));
         }
-
-        Destroy(gameObject);
     }
 
     private float CalculateAverageCoefficient()
     {
-        _averageValue = (transform.localScale.x + transform.localScale.y + transform.localScale.z) / _numberOfSides;
-
-        return _averageValue;
+        return (transform.localScale.x + transform.localScale.y + transform.localScale.z) / _numberOfSides;
     }
 
     private float SetExplosionForce(Rigidbody gameObject)
     {
-        _explosionForce = _defaultExplosionForce / CalculateAverageCoefficient();
-
-        return _explosionForce;
+        return _defaultExplosionForce / CalculateAverageCoefficient();
     }
 
     private float SetExplosionRadius(Rigidbody gameObject)
     {
-        _explosionRadius = _defaultExplosionRadius / CalculateAverageCoefficient();
-
-        return _explosionRadius;
+        return _defaultExplosionRadius / CalculateAverageCoefficient();
     }
 
     private List<Rigidbody> GetExplodableObjects()

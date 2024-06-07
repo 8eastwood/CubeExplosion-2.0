@@ -281,7 +281,6 @@ MonoBehaviour:
   _minInstantiateChance: 2
   _maxInstantiateChance: 6
   _chanceToDivide: 100
-  _cube: {fileID: 342261795}
   _colors:
   - {r: 0.03368445, g: 0.48665354, b: 0.93962264, a: 0}
   - {r: 0.85660374, g: 0.23697613, b: 0.23112135, a: 0}
@@ -746,7 +745,6 @@ MonoBehaviour:
   _minInstantiateChance: 2
   _maxInstantiateChance: 6
   _chanceToDivide: 100
-  _cube: {fileID: 1157191354}
   _colors:
   - {r: 0.03368445, g: 0.48665354, b: 0.93962264, a: 0}
   - {r: 0.85660374, g: 0.23697613, b: 0.23112135, a: 0}
@@ -1131,7 +1129,6 @@ MonoBehaviour:
   _minInstantiateChance: 2
   _maxInstantiateChance: 6
   _chanceToDivide: 100
-  _cube: {fileID: 1367214413}
   _colors:
   - {r: 0.03368445, g: 0.48665354, b: 0.93962264, a: 0}
   - {r: 0.85660374, g: 0.23697613, b: 0.23112135, a: 0}
@@ -1304,7 +1301,6 @@ MonoBehaviour:
   _minInstantiateChance: 2
   _maxInstantiateChance: 6
   _chanceToDivide: 100
-  _cube: {fileID: 1680600388}
   _colors:
   - {r: 0.03368445, g: 0.48665354, b: 0.93962264, a: 0}
   - {r: 0.85660374, g: 0.23697613, b: 0.23112135, a: 0}
@@ -1477,7 +1473,6 @@ MonoBehaviour:
   _minInstantiateChance: 2
   _maxInstantiateChance: 6
   _chanceToDivide: 100
-  _cube: {fileID: 1787072491}
   _colors:
   - {r: 0.03368445, g: 0.48665354, b: 0.93962264, a: 0}
   - {r: 0.85660374, g: 0.23697613, b: 0.23112135, a: 0}
@@ -1756,7 +1751,6 @@ MonoBehaviour:
   _minInstantiateChance: 2
   _maxInstantiateChance: 6
   _chanceToDivide: 100
-  _cube: {fileID: 1908009153}
   _colors:
   - {r: 0.03368445, g: 0.48665354, b: 0.93962264, a: 0}
   - {r: 0.85660374, g: 0.23697613, b: 0.23112135, a: 0}
@@ -2042,7 +2036,6 @@ MonoBehaviour:
   _minInstantiateChance: 2
   _maxInstantiateChance: 6
   _chanceToDivide: 100
-  _cube: {fileID: 1996818708}
   _colors:
   - {r: 0.03368445, g: 0.48665354, b: 0.93962264, a: 0}
   - {r: 0.85660374, g: 0.23697613, b: 0.23112135, a: 0}

@@ -1,11 +1,12 @@
 using UnityEngine;
 
+[RequireComponent(typeof(MeshRenderer))]
+
 class Spawner : MonoBehaviour
 {
     [SerializeField] private int _minInstantiateChance = 2;
     [SerializeField] private int _maxInstantiateChance = 6;
     [SerializeField] private int _chanceToDivide = 100;
-    [SerializeField] private GameObject _cube;
     [SerializeField] private Color[] _colors;
 
     private int _minDivideChance = 0;
@@ -16,6 +17,7 @@ class Spawner : MonoBehaviour
     private MeshRenderer _meshRenderer;
     private int _randomColor;
     private int _minColorNumber = 0;
+    private Exploder _exploder;
 
     private void OnMouseDown()
     {
@@ -24,7 +26,8 @@ class Spawner : MonoBehaviour
 
     private void Awake()
     {
-        _meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        _exploder = GetComponent<Exploder>();
+        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
     private void SpawnDividedObjects()
@@ -36,12 +39,18 @@ class Spawner : MonoBehaviour
             _randomChanceToInstantiate = Random.Range(_minInstantiateChance, _maxInstantiateChance);
             transform.localScale *= _scaleMultiplier;
             _chanceToDivide /= 2;
+            Destroy(gameObject);
 
             for (int i = 0; i < _randomChanceToInstantiate; i++)
             {
                 MeshRenderer renderer = Instantiate(_meshRenderer, transform.position, Quaternion.identity);
                 SetObjectColor(renderer);
             }
+        }
+        else
+        {
+            _exploder.GetExplode(gameObject);
+            Destroy(gameObject);
         }
     }
 
