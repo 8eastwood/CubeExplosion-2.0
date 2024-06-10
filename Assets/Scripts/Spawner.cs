@@ -9,14 +9,8 @@ class Spawner : MonoBehaviour
     [SerializeField] private int _chanceToDivide = 100;
     [SerializeField] private Color[] _colors;
 
-    private int _minDivideChance = 0;
-    private int _maxDivideChance = 100;
-    private int _randomChanceToDivide;
     private int _randomChanceToInstantiate;
-    private float _scaleMultiplier = 0.5f;
     private MeshRenderer _meshRenderer;
-    private int _randomColor;
-    private int _minColorNumber = 0;
     private Exploder _exploder;
 
     private void OnMouseDown()
@@ -32,9 +26,13 @@ class Spawner : MonoBehaviour
 
     private void SpawnDividedObjects()
     {
-        _randomChanceToDivide = Random.Range(_minDivideChance, _maxDivideChance);
+        int _minDivideChance = 0;
+        int _maxDivideChance = 100;
+        float _scaleMultiplier = 0.5f;
 
-        if (_randomChanceToDivide <= _chanceToDivide)
+        int randomChanceToDivide = Random.Range(_minDivideChance, _maxDivideChance);
+
+        if (randomChanceToDivide <= _chanceToDivide)
         {
             _randomChanceToInstantiate = Random.Range(_minInstantiateChance, _maxInstantiateChance);
             transform.localScale *= _scaleMultiplier;
@@ -49,14 +47,15 @@ class Spawner : MonoBehaviour
         }
         else
         {
-            _exploder.GetExplode(gameObject);
+            _exploder.ExplodeObject(gameObject);
             Destroy(gameObject);
         }
     }
 
     private void SetObjectColor(MeshRenderer meshRenderer)
     {
-        _randomColor = Random.Range(_minColorNumber, _colors.Length);
-        meshRenderer.material.color = _colors[_randomColor];
+        int minColorNumber = 0;
+        int randomColor = Random.Range(minColorNumber, _colors.Length);
+        meshRenderer.material.color = _colors[randomColor];
     }
 }
