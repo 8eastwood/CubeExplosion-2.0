@@ -1,16 +1,16 @@
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
-[RequireComponent (typeof(Exploder))]
+[RequireComponent(typeof(Exploder))]
 
 class Spawner : MonoBehaviour
 {
-    [SerializeField] private int _minInstantiateChance = 2;
-    [SerializeField] private int _maxInstantiateChance = 6;
+    [SerializeField] private int _minInstantiateNumber = 2;
+    [SerializeField] private int _maxInstantiateNumber = 6;
     [SerializeField] private int _chanceToDivide = 100;
     [SerializeField] private Color[] _colors;
 
-    private int _randomChanceToInstantiate;
+    private int _randomInstantiateAmount;
     private MeshRenderer _meshRenderer;
     private Exploder _exploder;
 
@@ -20,26 +20,22 @@ class Spawner : MonoBehaviour
         _meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    private void OnMouseDown()
-    {
-        SpawnDividedObjects();
-    }
-
-    private void SpawnDividedObjects()
+    public void SpawnDividedObjects()
     {
         int minDivideChance = 0;
         int maxDivideChance = 100;
         float scaleMultiplier = 0.5f;
+        int divider = 2;
 
         int randomChanceToDivide = Random.Range(minDivideChance, maxDivideChance);
 
         if (randomChanceToDivide <= _chanceToDivide)
         {
-            _randomChanceToInstantiate = Random.Range(_minInstantiateChance, _maxInstantiateChance + 1);
+            _randomInstantiateAmount = Random.Range(_minInstantiateNumber, _maxInstantiateNumber + 1);
             transform.localScale *= scaleMultiplier;
-            _chanceToDivide /= 2;
+            _chanceToDivide /= divider;
 
-            for (int i = 0; i < _randomChanceToInstantiate; i++)
+            for (int i = 0; i < _randomInstantiateAmount; i++)
             {
                 MeshRenderer renderer = Instantiate(_meshRenderer, transform.position, Quaternion.identity);
                 SetRandomColor(renderer);
