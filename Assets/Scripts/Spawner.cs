@@ -26,33 +26,33 @@ class Spawner : MonoBehaviour
 
     private void SpawnDividedObjects()
     {
-        int _minDivideChance = 0;
-        int _maxDivideChance = 100;
-        float _scaleMultiplier = 0.5f;
+        int minDivideChance = 0;
+        int maxDivideChance = 100;
+        float scaleMultiplier = 0.5f;
 
-        int randomChanceToDivide = Random.Range(_minDivideChance, _maxDivideChance);
+        int randomChanceToDivide = Random.Range(minDivideChance, maxDivideChance);
 
         if (randomChanceToDivide <= _chanceToDivide)
         {
             _randomChanceToInstantiate = Random.Range(_minInstantiateChance, _maxInstantiateChance);
-            transform.localScale *= _scaleMultiplier;
+            transform.localScale *= scaleMultiplier;
             _chanceToDivide /= 2;
-            Destroy(gameObject);
 
             for (int i = 0; i < _randomChanceToInstantiate; i++)
             {
                 MeshRenderer renderer = Instantiate(_meshRenderer, transform.position, Quaternion.identity);
-                SetObjectColor(renderer);
+                SetRandomColor(renderer);
             }
         }
         else
         {
-            _exploder.ExplodeObject(gameObject);
-            Destroy(gameObject);
+            _exploder.Explode();
         }
+
+        Destroy(gameObject);
     }
 
-    private void SetObjectColor(MeshRenderer meshRenderer)
+    private void SetRandomColor(MeshRenderer meshRenderer)
     {
         int minColorNumber = 0;
         int randomColor = Random.Range(minColorNumber, _colors.Length);

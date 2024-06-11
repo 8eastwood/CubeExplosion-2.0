@@ -7,32 +7,27 @@ public class Exploder : MonoBehaviour
     [SerializeField] private float _defaultExplosionForce = 150f;
     [SerializeField] private ParticleSystem _effect;
 
-    private const int _amountOfLocalScaleAxis = 3;
+    private const int AmountOfLocalScaleAxis = 3;
 
-    public void ExplodeObject(GameObject gameObject)
-    {
-        Explode(gameObject);
-    }
-
-    private void Explode(GameObject gameObject)
+    public void Explode()
     {
         foreach (Rigidbody explodableObject in GetExplodableObjects())
         {
-            explodableObject.AddExplosionForce(GetExplosionForce(explodableObject), transform.position, GetExplosionRadius(explodableObject));
+            explodableObject.AddExplosionForce(GetExplosionForce(), transform.position, GetExplosionRadius());
         }
     }
 
     private float CalculateAverageCoefficient()
     {
-        return (transform.localScale.x + transform.localScale.y + transform.localScale.z) / _amountOfLocalScaleAxis;
+        return (transform.localScale.x + transform.localScale.y + transform.localScale.z) / AmountOfLocalScaleAxis;
     }
 
-    private float GetExplosionForce(Rigidbody gameObject)
+    private float GetExplosionForce()
     {
         return _defaultExplosionForce / CalculateAverageCoefficient();
     }
 
-    private float GetExplosionRadius(Rigidbody gameObject)
+    private float GetExplosionRadius()
     {
         return _defaultExplosionRadius / CalculateAverageCoefficient();
     }
