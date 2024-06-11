@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
+[RequireComponent (typeof(Exploder))]
 
 class Spawner : MonoBehaviour
 {
@@ -13,15 +14,15 @@ class Spawner : MonoBehaviour
     private MeshRenderer _meshRenderer;
     private Exploder _exploder;
 
-    private void OnMouseDown()
-    {
-        SpawnDividedObjects();
-    }
-
     private void Awake()
     {
         _exploder = GetComponent<Exploder>();
         _meshRenderer = GetComponent<MeshRenderer>();
+    }
+
+    private void OnMouseDown()
+    {
+        SpawnDividedObjects();
     }
 
     private void SpawnDividedObjects()
@@ -34,7 +35,7 @@ class Spawner : MonoBehaviour
 
         if (randomChanceToDivide <= _chanceToDivide)
         {
-            _randomChanceToInstantiate = Random.Range(_minInstantiateChance, _maxInstantiateChance);
+            _randomChanceToInstantiate = Random.Range(_minInstantiateChance, _maxInstantiateChance + 1);
             transform.localScale *= scaleMultiplier;
             _chanceToDivide /= 2;
 

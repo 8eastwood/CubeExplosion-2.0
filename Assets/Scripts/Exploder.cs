@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Exploder : MonoBehaviour
 {
+    private const int AmountOfLocalScaleAxis = 3;
+
     [SerializeField] private float _defaultExplosionRadius = 5f;
     [SerializeField] private float _defaultExplosionForce = 150f;
     [SerializeField] private ParticleSystem _effect;
-
-    private const int AmountOfLocalScaleAxis = 3;
 
     public void Explode()
     {
